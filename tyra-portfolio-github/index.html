@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tyra Person, CRA — Senior Grants & Contracts Specialist at UT Austin Department of Computer Science.">
+<title>Tyra Person, CRA</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --orange: #BF5700;
+  --orange-light: #e8a06c;
+  --text: #222;
+  --text-mid: #555;
+  --text-light: #888;
+  --bg: #fff;
+  --bg-alt: #f8f7f5;
+  --border: #e8e6e3;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+}
+a { color: var(--orange); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Layout */
+.container { max-width: 820px; margin: 0 auto; padding: 0 2rem; }
+
+/* Nav */
+nav {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+nav .container {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 0.8rem; padding-bottom: 0.8rem;
+}
+nav .name { font-weight: 700; font-size: 1rem; color: var(--text); text-decoration: none; }
+nav .links { display: flex; gap: 1.5rem; }
+nav .links a {
+  font-size: 0.8rem; font-weight: 500; color: var(--text-mid);
+  text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none;
+}
+nav .links a:hover { color: var(--orange); }
+
+/* Hero / Intro */
+.intro { padding: 4rem 0 3rem; }
+.intro-grid { display: grid; grid-template-columns: 1fr 200px; gap: 2.5rem; align-items: start; }
+.intro-photo {
+  width: 200px; height: 200px; border-radius: 50%;
+  object-fit: cover; object-position: center center; border: 3px solid var(--border);
+}
+.intro-text h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
+.intro-text .title { font-size: 0.95rem; color: var(--orange); font-weight: 600; margin-bottom: 1rem; }
+.intro-text p { font-size: 0.92rem; color: var(--text-mid); margin-bottom: 0.8rem; }
+.intro-text p:last-of-type { margin-bottom: 1.2rem; }
+.link-row { display: flex; gap: 0.4rem; flex-wrap: wrap; font-size: 0.88rem; }
+.link-row a { font-weight: 500; }
+.link-row .sep { color: var(--text-light); }
+
+/* Stats */
+.stats { padding: 2rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; text-align: center; }
+.stat-num { font-size: 1.4rem; font-weight: 700; color: var(--orange); }
+.stat-label { font-size: 0.68rem; color: var(--text-light); margin-top: 0.15rem; line-height: 1.4; }
+
+/* Sections */
+.section { padding: 2.5rem 0; }
+.section + .section { border-top: 1px solid var(--border); }
+.section h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+
+/* Work list */
+.work-intro { font-size: 0.92rem; color: var(--text-mid); margin-bottom: 0.8rem; }
+.automation-intro { margin-top: 1.5rem; }
+.work-list { padding-left: 1.2rem; color: var(--text-mid); }
+.work-list li { font-size: 0.9rem; margin-bottom: 0.65rem; padding-left: 0.25rem; }
+.work-list li::marker { color: var(--orange); }
+
+/* Experience */
+.exp-group { margin-bottom: 2.2rem; }
+.exp-group:last-child { margin-bottom: 0; }
+.exp-group h3 {
+  font-size: 0.8rem; font-weight: 600; color: var(--orange);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+.career-path { padding-left: 1.4rem; margin-bottom: 1.8rem; }
+.career-step { position: relative; }
+.career-step::before {
+  content: ""; position: absolute; z-index: 1;
+  left: -1.4rem; top: 0.5rem;
+  width: 0.55rem; height: 0.55rem; border-radius: 50%;
+  background: var(--orange); border: 2px solid var(--orange);
+  box-shadow: 0 0 0 3px var(--bg);
+}
+.career-step:not(:last-child)::after {
+  content: ""; position: absolute; z-index: 0;
+  left: calc(-1.4rem + 0.275rem); top: 1rem; bottom: -1.7rem;
+  width: 2px; background: var(--orange);
+  transform: translateX(-50%);
+}
+.exp-item { margin-bottom: 1.5rem; }
+.exp-group .exp-item:last-child { margin-bottom: 0; }
+.exp-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.3rem; }
+.exp-role { font-size: 0.92rem; font-weight: 600; }
+.exp-date { font-size: 0.78rem; color: var(--text-light); white-space: nowrap; }
+.exp-org { font-size: 0.85rem; color: var(--text-mid); }
+.exp-desc { font-size: 0.85rem; color: var(--text-mid); margin-top: 0.3rem; }
+
+/* Skills */
+.skill-group { margin-bottom: 1.2rem; }
+.skill-group h3 { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.tag {
+  font-size: 0.75rem; font-weight: 500;
+  padding: 0.25rem 0.65rem; border-radius: 100px;
+  background: var(--bg-alt); color: var(--text-mid);
+  border: 1px solid var(--border);
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-light);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .intro-grid { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+  .link-row { justify-content: center; }
+  .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  .exp-header { flex-direction: column; }
+  nav .links { gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#" class="name">Tyra Person</a>
+    <div class="links">
+      <a href="#impact">What I Do</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- INTRO -->
+<div class="intro">
+  <div class="intro-grid">
+    <div class="intro-text">
+      <h1>Tyra Person</h1>
+      <div class="title">Senior Grants & Contracts Specialist, CRA</div>
+      <p>I'm a Certified Research Administrator in the <a href="https://www.cs.utexas.edu/" target="_blank">Department of Computer Science</a> at the <a href="https://www.utexas.edu/" target="_blank">University of Texas at Austin</a>, supporting faculty in Systems, Robotics, AI, and Programs across the full grant lifecycle.</p>
+      <p>I combine grants expertise with practical automation to make complex financial and administrative processes faster, clearer, and easier for our team to manage.</p>
+      <p>I studied Chinese Language &amp; Literature at <a href="https://www.utexas.edu/" target="_blank">UT Austin</a> (B.A. 2015), with a study abroad year at Donghua University, Shanghai through <a href="https://cetacademicprograms.com/" target="_blank">CET Academic Programs</a>. Before grants, I taught English in China for three years, then Mandarin here in Austin.</p>
+      <div class="link-row">
+        <a href="mailto:tls2022@cs.utexas.edu">tls2022@cs.utexas.edu</a><span class="sep">/</span>
+        <a href="https://www.linkedin.com/in/tlskinner1994/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+    <img class="intro-photo" src="profile-white.png" alt="Tyra Person">
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div>
+      <div class="stat-num">$12.4M</div>
+      <div class="stat-label">Portfolio<br>Tracked</div>
+    </div>
+    <div>
+      <div class="stat-num">40</div>
+      <div class="stat-label">Accounts<br>Managed</div>
+    </div>
+    <div>
+      <div class="stat-num"><a href="https://www.cra-cert.org/" target="_blank" style="color:var(--orange);text-decoration:none;">CRA</a></div>
+      <div class="stat-label">Certified by<br><a href="https://www.cra-cert.org/" target="_blank" style="color:var(--text-light);text-decoration:underline;">RACC</a></div>
+    </div>
+    <div>
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Dashboards<br>Built</div>
+    </div>
+    <div>
+      <div class="stat-num">12+</div>
+      <div class="stat-label">AI<br>Workflows</div>
+    </div>
+    <div>
+      <div class="stat-num">4+</div>
+      <div class="stat-label">Years at<br>UT CS</div>
+    </div>
+  </div>
+</div>
+
+<!-- IMPACT -->
+<div id="impact" class="section">
+  <h2>What I Do</h2>
+  <p class="work-intro">I support the full grant lifecycle, from proposal preparation and submission through award setup, fiscal management, and compliance.</p>
+  <ul class="work-list">
+    <li>Prepare and submit research proposals, including budgets, budget justifications, biosketches, and sponsor and university forms.</li>
+    <li>Set up awards and manage post-award activity, including budgets, modifications, annual reports, expenditure review, and compliance.</li>
+    <li>Monitor balances, reconcile 40 research accounts monthly, and provide financial reports to Principal Investigators.</li>
+    <li>Coordinate travel, reimbursements, purchasing, events, and other research support.</li>
+    <li>Collaborate with faculty, research teams, and the Texas Robotics Program Manager on special projects.</li>
+  </ul>
+
+  <p class="work-intro automation-intro">I use AI, Smartsheet, and Python to streamline:</p>
+  <ul class="work-list">
+    <li>Award risk scoring and PI effort tracking across active grants.</li>
+    <li>GRA roster and costing reconciliation, Data Shuttle uploads, and data corrections.</li>
+    <li>Finance, HR, procurement, and account setup workflows.</li>
+    <li>Payment processing, including VP5, VPE, and VP2 packet assembly, PDF stamping, and email triage.</li>
+    <li>Process documentation and training so teammates can use the tools independently.</li>
+  </ul>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="experience" class="section">
+  <h2>Experience</h2>
+
+  <section class="exp-group" aria-labelledby="ut-career">
+    <h3 id="ut-career">My Career at UT</h3>
+
+    <div class="career-path" aria-label="Department of Computer Science career progression">
+    <div class="exp-item career-step">
+      <div class="exp-header">
+        <span class="exp-role">Senior Grants &amp; Contracts Specialist</span>
+        <span class="exp-date">Sep 2026 &ndash; Present</span>
+      </div>
+      <div class="exp-org">Department of Computer Science, UT Austin</div>
+      <div class="exp-desc">Full lifecycle management of a $12.4M portfolio across 8 PIs and 40 accounts: proposals, award setup, reconciliation, effort certification, and compliance. Lead training for the CS Finance &amp; Admin team, mentor junior grants staff, and own the design of Smartsheet and AI-based solutions for research administration, HR, and purchasing.</div>
+    </div>
+
+    <div class="exp-item career-step">
+      <div class="exp-header">
+        <span class="exp-role">Grants &amp; Contracts Specialist</span>
+        <span class="exp-date">Mar 2025 &ndash; Sep 2026</span>
+      </div>
+      <div class="exp-org">Department of Computer Science, UT Austin</div>
+    </div>
+
+    <div class="exp-item career-step">
+      <div class="exp-header">
+        <span class="exp-role">Senior Administrative Associate, Grant Admin</span>
+        <span class="exp-date">Sep 2022 &ndash; Mar 2025</span>
+      </div>
+      <div class="exp-org">Department of Computer Science, UT Austin</div>
+    </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">Study Abroad Credit Assistant</span>
+        <span class="exp-date">Jan 2013 &ndash; Dec 2015</span>
+      </div>
+      <div class="exp-org">International Office, UT Austin</div>
+      <div class="exp-desc">Managed applications, admissions, and post-acceptance records for study abroad students. Processed credit transfers and course equivalents in MyCA in line with Study Abroad Office, Registrar, and GIAC policies.</div>
+    </div>
+  </section>
+
+  <section class="exp-group" aria-labelledby="china-career">
+    <h3 id="china-career">In China</h3>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">Lead Homeroom Teacher</span>
+        <span class="exp-date">Aug 2018 &ndash; Jul 2019</span>
+      </div>
+      <div class="exp-org">BIBS (Beanstalk International Bilingual School), Beijing</div>
+      <div class="exp-desc">Taught preschool students ages 2&ndash;5 using the IPC Early Years curriculum, coordinated parent conferences, and led team meetings in Chinese.</div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">English Teacher</span>
+        <span class="exp-date">Apr 2016 &ndash; May 2018</span>
+      </div>
+      <div class="exp-org">Best Learning English, Jinan, China</div>
+      <div class="exp-desc">Taught reading, math, science, and social studies to students ages 3&ndash;16 using the McGraw Hill Wonders curriculum, and developed a new phonics program for preschool students.</div>
+    </div>
+  </section>
+
+  <section class="exp-group" aria-labelledby="other-career">
+    <h3 id="other-career">Everywhere Else</h3>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">K-2nd Mandarin Subject Expert Teacher</span>
+        <span class="exp-date">Jul 2021 &ndash; Jul 2022</span>
+      </div>
+      <div class="exp-org">BASIS Austin Primary</div>
+      <div class="exp-desc">Designed and taught interactive Mandarin lessons for K&ndash;2 students focused on reading, writing, listening, and Chinese culture. Created assessments and supported extracurricular programs including Late Bird and Dance Club.</div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">Implementation Associate</span>
+        <span class="exp-date">Sep 2019 &ndash; Jun 2021</span>
+      </div>
+      <div class="exp-org">Fringe Benefit Group</div>
+      <div class="exp-desc">Onboarded employer groups onto healthcare benefit plans for hourly and government contract workers. Coordinated across departments to implement major medical, retirement, and specialty benefits under the Davis-Bacon and Service Contract Acts.</div>
+    </div>
+  </section>
+</div>
+
+<!-- SKILLS -->
+<div id="skills" class="section">
+  <h2>Skills & Tools</h2>
+
+  <div class="skill-group">
+    <h3>Grant Administration</h3>
+    <div class="tags">
+      <span class="tag">Proposal Preparation</span>
+      <span class="tag">Budget Justification</span>
+      <span class="tag">Award Setup</span>
+      <span class="tag">Post-Award Management</span>
+      <span class="tag">Effort Reporting</span>
+      <span class="tag">Subaward Processing</span>
+      <span class="tag">Monthly Reconciliation</span>
+      <span class="tag">Compliance Monitoring</span>
+      <span class="tag">Cost Allocation</span>
+    </div>
+  </div>
+
+  <div class="skill-group">
+    <h3>Funding Agencies</h3>
+    <div class="tags">
+      <span class="tag">NSF</span>
+      <span class="tag">DARPA</span>
+      <span class="tag">ONR</span>
+      <span class="tag">DOD</span>
+      <span class="tag">Industry (Amazon, Adobe, Google, etc.)</span>
+      <span class="tag">International (KAIST, KIST)</span>
+    </div>
+  </div>
+
+  <div class="skill-group">
+    <h3>Technology & Automation</h3>
+    <div class="tags">
+      <span class="tag">Smartsheet</span>
+      <span class="tag">Claude AI / Cowork</span>
+      <span class="tag">ChatGPT</span>
+      <span class="tag">Gemini</span>
+      <span class="tag">Python Scripting</span>
+      <span class="tag">Workday</span>
+      <span class="tag">DocuSign</span>
+      <span class="tag">Box</span>
+      <span class="tag">Microsoft 365</span>
+      <span class="tag">PDF Automation</span>
+    </div>
+  </div>
+
+  <div class="skill-group">
+    <h3>Languages & Soft Skills</h3>
+    <div class="tags">
+      <span class="tag">English (Native)</span>
+      <span class="tag">Mandarin Chinese</span>
+      <span class="tag">Cross-Cultural Communication</span>
+      <span class="tag">Process Design</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end container -->
+
+<footer>
+  <div class="container">
+    <div class="link-row" style="justify-content:center; margin-bottom:0.5rem;">
+      <a href="mailto:tls2022@cs.utexas.edu">tls2022@cs.utexas.edu</a><span class="sep">/</span>
+      <a href="https://www.linkedin.com/in/tlskinner1994/" target="_blank">LinkedIn</a>
+    </div>
+    &copy; 2026 Tyra Person. Built by Tyra &amp; AI. Hook 'em.
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+</script>
+
+</body>
+</html>
